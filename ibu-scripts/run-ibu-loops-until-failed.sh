@@ -22,6 +22,8 @@ Options:
     -r|--rollout                Halt if a rollout is detected
     --sriov                     Halt if SRIOV workaround is detected
 
+    --pause <seconds>           Pause between loops. Default is 300 seconds (5 minutes)
+
 Examples:
     # To run loops for (just over) 24 hours, ignoring additional reboot detection
     ${PROG} --hours 24 --ignore-reboots
@@ -704,8 +706,9 @@ declare -i MAX_LOOPS=-1
 declare -i FINISH_AFTER_SECONDS=0
 declare -i FINISH_AFTER_HOURS_LIMIT=0
 declare -i START_SECONDS=${SECONDS}
+declare -i PAUSE=300
 
-LONGOPTS="help,ssh-key:,node:,rollout,max-loops:,ignore-reboots,hours:,sriov"
+LONGOPTS="help,ssh-key:,node:,rollout,max-loops:,ignore-reboots,hours:,sriov,pause"
 OPTS=$(getopt -o "hk:n:rm:i" --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -749,6 +752,10 @@ while :; do
             fi
 
             FINISH_AFTER_SECONDS=$((FINISH_AFTER_HOURS_LIMIT*3600+START_SECONDS))
+            shift 2
+            ;;
+        --pause)
+            PAUSE=$2
             shift 2
             ;;
         --)
@@ -940,7 +947,7 @@ while :; do
 
     upgrades_completed=${counter}
 
-    log_with_pass_counter "Waiting to start next loop"
+    log_with_pass_counter "Waiting $(duration ${PAUSE}) to start next loop"
     log_with_pass_counter "SRIOV workaround was needed ${workarounds} loop(s) so far"
     log_with_pass_counter "Static pod rollouts occurred during ${rollouts} loop(s) so far"
     log_with_pass_counter "Additional reboots detected during ${reboots} loop(s) so far"
@@ -956,7 +963,7 @@ while :; do
         exit 0
     fi
 
-    sleep 10
+    sleep ${PAUSE}
 done
 
 exit 0
