@@ -1,0 +1,11 @@
+[Unit]
+Description=SNO Lease reset
+After=NetworkManager-wait-online.service
+Before=ovs-configuration.service kubelet-dependencies.target kubelet.service
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/local/bin/sno-reset-leases.sh
+
+[Install]
+WantedBy=multi-user.target
