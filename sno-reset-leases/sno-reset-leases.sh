@@ -58,5 +58,10 @@ if ! podman exec local_etcd etcdctl del --prefix /kubernetes.io/leases/ --comman
     exit 1
 fi
 
+# Ensure /etc/docker/certs.d exists, to avoid MCP degradation issue
+if [ ! -d /etc/docker/certs.d ]; then
+    mkdir -p /etc/docker/certs.d
+fi
+
 exit 0
 

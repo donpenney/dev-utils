@@ -11,23 +11,23 @@ spec:
     storage:
       files:
         - contents:
-            source: data:text/plain;charset=utf-8;base64,IyEvYmluL2Jhc2gKIwojIFJ1biBhIGxvY2FsIGV0Y2Qgc2VydmVyIGFuZCBkZWxldGUgYWxsIHRoZSBsZWFkZXIgbGVhc2VzCiMKClBST0c9JChiYXNlbmFtZSAiJDAiKQoKZnVuY3Rpb24gbG9nIHsKICAgIGVjaG8gIiR7UFJPR306ICQqIgp9CgpmdW5jdGlvbiBjbGVhbnVwIHsKICAgIGlmICEgcG9kbWFuIGNvbnRhaW5lciBleGlzdHMgbG9jYWxfZXRjZDsgdGhlbgogICAgICAgIHJldHVybgogICAgZmkKCiAgICAjIFN0b3AgdGhlIGxvY2FsX2V0Y2QKICAgIGxvZyAiU2h1dHRpbmcgZG93biBsb2NhbF9ldGNkIgogICAgaWYgISBwb2RtYW4gc3RvcCBsb2NhbF9ldGNkIDsgdGhlbgogICAgICAgIGxvZyAiRmFpbGVkIHRvIHN0b3AgbG9jYWxfZXRjZC4gS2lsbGluZyBjb250YWluZXIiCiAgICAgICAgaWYgISBwb2RtYW4ga2lsbCBsb2NhbF9ldGNkIDsgdGhlbgogICAgICAgICAgICBsb2cgIkZhaWxlZCB0byBraWxsIGxvY2FsX2V0Y2QiCiAgICAgICAgICAgIGV4aXQgMQogICAgICAgIGZpCiAgICBmaQp9Cgp0cmFwIGNsZWFudXAgRVhJVAoKc2V0IC14CgpNQU5JRkVTVD0vZXRjL2t1YmVybmV0ZXMvbWFuaWZlc3RzL2V0Y2QtcG9kLnlhbWwKaWYgWyAhIC1mICIke01BTklGRVNUfSIgXTsgdGhlbgogICAgbG9nICJTdGF0aWMgcG9kIG1hbmlmZXN0IG5vdCBmb3VuZDogJHtNQU5JRkVTVH0iCiAgICBleGl0IDEKZmkKCiMgRmluZCB0aGUgZXRjZCBpbWFnZSBmcm9tIHRoZSBzdGF0aWMgcG9kIG1hbmlmZXN0CkVUQ0RfSU1BR0U9JChqcSAtciAnLnNwZWMuY29udGFpbmVyc1tdIHwgc2VsZWN0KC5uYW1lID09ICJldGNkIikgfCAuaW1hZ2UnIDwke01BTklGRVNUfSkKaWYgWyAteiAiJHtFVENEX0lNQUdFfSIgXTsgdGhlbgogICAgbG9nICJVbmFibGUgdG8gZGV0ZXJtaW5lIGV0Y2QgaW1hZ2UgZnJvbSBzdGF0aWMgcG9kIG1hbmlmZXN0IgogICAgZXhpdCAxCmZpCgojIExhdW5jaCBsb2NhbCBldGNkCmxvZyAiTGF1bmNoaW5nIGxvY2FsX2V0Y2QgY29udGFpbmVyIgppZiAhIHBvZG1hbiBydW4gLS1uYW1lIGxvY2FsX2V0Y2QgLS1ybSAtLXJlcGxhY2UgLS1kZXRhY2ggLS1wcml2aWxlZ2VkIFwKICAgIC0tZW50cnlwb2ludCBldGNkIC12IC92YXIvbGliL2V0Y2Q6L3N0b3JlIFwKICAgICIke0VUQ0RfSU1BR0V9IiAtLW5hbWUgZWRpdG9yIC0tZGF0YS1kaXIgL3N0b3JlIDsgdGhlbgogICAgbG9nICJVbmFibGUgdG8gcnVuIGxvY2FsX2V0Y2QgY29udGFpbmVyIgogICAgZXhpdCAxCmZpCgojIERlbGV0ZSBhbGwgbGVhc2VzCmxvZyAiRGVsZXRpbmcgbGVhc2VzIgppZiAhIHBvZG1hbiBleGVjIGxvY2FsX2V0Y2QgZXRjZGN0bCBkZWwgLS1wcmVmaXggL2t1YmVybmV0ZXMuaW8vbGVhc2VzLyAtLWNvbW1hbmQtdGltZW91dD02MHMgOyB0aGVuCiAgICBsb2cgIkZhaWxlZCB0byBkZWxldGUgbGVhc2VzIgogICAgZXhpdCAxCmZpCgpleGl0IDAKCg==
+            source: data:text/plain;charset=utf-8;base64,IyEvYmluL2Jhc2gKIwojIFJ1biBhIGxvY2FsIGV0Y2Qgc2VydmVyIGFuZCBkZWxldGUgYWxsIHRoZSBsZWFkZXIgbGVhc2VzCiMKClBST0c9JChiYXNlbmFtZSAiJDAiKQoKZnVuY3Rpb24gbG9nIHsKICAgIGVjaG8gIiR7UFJPR306ICQqIgp9CgpmdW5jdGlvbiBjbGVhbnVwIHsKICAgIGlmICEgcG9kbWFuIGNvbnRhaW5lciBleGlzdHMgbG9jYWxfZXRjZDsgdGhlbgogICAgICAgIHJldHVybgogICAgZmkKCiAgICAjIFN0b3AgdGhlIGxvY2FsX2V0Y2QKICAgIGxvZyAiU2h1dHRpbmcgZG93biBsb2NhbF9ldGNkIgogICAgaWYgISBwb2RtYW4gc3RvcCBsb2NhbF9ldGNkIDsgdGhlbgogICAgICAgIGxvZyAiRmFpbGVkIHRvIHN0b3AgbG9jYWxfZXRjZC4gS2lsbGluZyBjb250YWluZXIiCiAgICAgICAgaWYgISBwb2RtYW4ga2lsbCBsb2NhbF9ldGNkIDsgdGhlbgogICAgICAgICAgICBsb2cgIkZhaWxlZCB0byBraWxsIGxvY2FsX2V0Y2QiCiAgICAgICAgICAgIGV4aXQgMQogICAgICAgIGZpCiAgICBmaQp9Cgp0cmFwIGNsZWFudXAgRVhJVAoKc2V0IC14CgpNQU5JRkVTVD0vZXRjL2t1YmVybmV0ZXMvbWFuaWZlc3RzL2V0Y2QtcG9kLnlhbWwKaWYgWyAhIC1mICIke01BTklGRVNUfSIgXTsgdGhlbgogICAgbG9nICJTdGF0aWMgcG9kIG1hbmlmZXN0IG5vdCBmb3VuZDogJHtNQU5JRkVTVH0iCiAgICBleGl0IDEKZmkKCiMgRmluZCB0aGUgZXRjZCBpbWFnZSBmcm9tIHRoZSBzdGF0aWMgcG9kIG1hbmlmZXN0CkVUQ0RfSU1BR0U9JChqcSAtciAnLnNwZWMuY29udGFpbmVyc1tdIHwgc2VsZWN0KC5uYW1lID09ICJldGNkIikgfCAuaW1hZ2UnIDwke01BTklGRVNUfSkKaWYgWyAteiAiJHtFVENEX0lNQUdFfSIgXTsgdGhlbgogICAgbG9nICJVbmFibGUgdG8gZGV0ZXJtaW5lIGV0Y2QgaW1hZ2UgZnJvbSBzdGF0aWMgcG9kIG1hbmlmZXN0IgogICAgZXhpdCAxCmZpCgojIExhdW5jaCBsb2NhbCBldGNkCmxvZyAiTGF1bmNoaW5nIGxvY2FsX2V0Y2QgY29udGFpbmVyIgppZiAhIHBvZG1hbiBydW4gLS1uYW1lIGxvY2FsX2V0Y2QgLS1ybSAtLXJlcGxhY2UgLS1kZXRhY2ggLS1wcml2aWxlZ2VkIFwKICAgIC0tZW50cnlwb2ludCBldGNkIC12IC92YXIvbGliL2V0Y2Q6L3N0b3JlIFwKICAgICIke0VUQ0RfSU1BR0V9IiAtLW5hbWUgZWRpdG9yIC0tZGF0YS1kaXIgL3N0b3JlIDsgdGhlbgogICAgbG9nICJVbmFibGUgdG8gcnVuIGxvY2FsX2V0Y2QgY29udGFpbmVyIgogICAgZXhpdCAxCmZpCgojIERlbGV0ZSBhbGwgbGVhc2VzCmxvZyAiRGVsZXRpbmcgbGVhc2VzIgppZiAhIHBvZG1hbiBleGVjIGxvY2FsX2V0Y2QgZXRjZGN0bCBkZWwgLS1wcmVmaXggL2t1YmVybmV0ZXMuaW8vbGVhc2VzLyAtLWNvbW1hbmQtdGltZW91dD02MHMgOyB0aGVuCiAgICBsb2cgIkZhaWxlZCB0byBkZWxldGUgbGVhc2VzIgogICAgZXhpdCAxCmZpCgojIEVuc3VyZSAvZXRjL2RvY2tlci9jZXJ0cy5kIGV4aXN0cywgdG8gYXZvaWQgTUNQIGRlZ3JhZGF0aW9uIGlzc3VlCmlmIFsgISAtZCAvZXRjL2RvY2tlci9jZXJ0cy5kIF07IHRoZW4KICAgIG1rZGlyIC1wIC9ldGMvZG9ja2VyL2NlcnRzLmQKZmkKCmV4aXQgMAoK
           mode: 365
           path: /usr/local/bin/sno-reset-leases.sh
-      systemd:
-        units:
-          - name: sno-reset-leases.service
-            enabled: true
-            contents: |
-              [Unit]
-              Description=SNO Lease reset
-              After=NetworkManager-wait-online.service
-              Before=ovs-configuration.service kubelet-dependencies.target kubelet.service
+    systemd:
+      units:
+        - name: sno-reset-leases.service
+          enabled: true
+          contents: |
+            [Unit]
+            Description=SNO Lease reset
+            After=NetworkManager-wait-online.service
+            Before=ovs-configuration.service kubelet-dependencies.target kubelet.service
 
-              [Service]
-              Type=oneshot
-              RemainAfterExit=no
-              ExecStart=/usr/local/bin/sno-reset-leases.sh
+            [Service]
+            Type=oneshot
+            RemainAfterExit=no
+            ExecStart=/usr/local/bin/sno-reset-leases.sh
 
-              [Install]
-              WantedBy=multi-user.target
+            [Install]
+            WantedBy=multi-user.target
