@@ -26,13 +26,13 @@ for logdir in ${logdirs}; do
 
     lines=$(grep -c -e "${start_log}" "${lf}")
     if [ "${lines}" -ne 1 ]; then
-        echo "### Starting log: Expected count=1, found ${lines}: ${lf}"
+        #echo "### Starting log: Expected count=1, found ${lines}: ${lf}"
         continue
     fi
 
     lines=$(grep -c -e "${acquired_log}" "${lf}")
     if [ "${lines}" -ne 1 ]; then
-        echo "### Acquired log: Expected count=1, found ${lines}: ${lf}"
+        #echo "### Acquired log: Expected count=1, found ${lines}: ${lf}"
         continue
     fi
 

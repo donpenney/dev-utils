@@ -27,6 +27,36 @@ function cleanup {
 
 trap cleanup EXIT
 
+function clusterIsSNO {
+    local json=
+    local controlPlaneTopology=
+    local infrastructureTopology=
+    local clusterCR="/kubernetes.io/config.openshift.io/infrastructures/cluster"
+    json=$(podman exec local_etcd etcdctl get "${clusterCR}" --print-value-only)
+    controlPlaneTopology=$(echo "${json}" | jq -r '.status.controlPlaneTopology')
+    infrastructureTopology=$(echo "${json}" | jq -r '.status.infrastructureTopology')
+
+    if [ "${controlPlaneTopology}" != "SingleReplica" ] || [ "${infrastructureTopology}" != "SingleReplica" ]; then
+        log "Cluster is not SNO: controlPlaneTopology=${controlPlaneTopology}, infrastructureTopology=${infrastructureTopology}"
+        return 1
+    fi
+
+    return 0
+}
+
+function lcaNamespaceExists {
+    local lcaNs="/kubernetes.io/namespaces/openshift-lifecycle-agent"
+    [ "$(podman exec local_etcd etcdctl get ${lcaNs} --keys-only)" = "${lcaNs}" ]
+}
+
+function deleteKey {
+    local key="$1"
+    if [ "$(podman exec local_etcd etcdctl get ${key} --keys-only)" = "${key}" ]; then
+        log "Deleting ${key}"
+        podman exec local_etcd etcdctl del "${key}"
+    fi
+}
+
 set -x
 
 MANIFEST=/etc/kubernetes/manifests/etcd-pod.yaml
@@ -51,12 +81,31 @@ if ! podman run --name local_etcd --rm --replace --detach --privileged \
     exit 1
 fi
 
+# Exit without making changes, if not SNO
+if ! clusterIsSNO; then
+    log "Cluster is not SNO. Exiting without changes"
+    exit 0
+fi
+
+# Exit without making changes, if no LCA
+if ! lcaNamespaceExists; then
+    log "LCA is not installed. Exiting without changes"
+    exit 0
+fi
+
 # Delete all leases
 log "Deleting leases"
 if ! podman exec local_etcd etcdctl del --prefix /kubernetes.io/leases/ --command-timeout=60s ; then
     log "Failed to delete leases"
     exit 1
 fi
+
+# In 4.14, there are some pods using configmap locks, rather than lease locks, for leader election.
+# Delete these specific entries, if they exist
+deleteKey "/kubernetes.io/configmaps/openshift-cloud-credential-operator/cloud-credential-operator-leader"
+deleteKey "/kubernetes.io/configmaps/openshift-cluster-version/version"
+deleteKey "/kubernetes.io/configmaps/openshift-controller-manager/openshift-master-controllers"
+deleteKey "/kubernetes.io/configmaps/openshift-marketplace/marketplace-operator-lock"
 
 # Ensure /etc/docker/certs.d exists, to avoid MCP degradation issue
 if [ ! -d /etc/docker/certs.d ]; then
